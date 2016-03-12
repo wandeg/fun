@@ -42,6 +42,16 @@ def get_factors(n):
 
 	return sorted(list(facts))
 
+def check_abundance(n):
+	"""Check whether number is perfect, abundant or deficient"""
+	sum_fact = sum(get_factors(n))
+	if sum_fact > n:
+		return 1
+	elif sum_fact < n:
+		return -1
+	return 0
+
+
 def tests():
 	"""Test code is correct"""
 	assert triangular(3) == (1+2+3)
@@ -51,3 +61,7 @@ def tests():
 	val = random.randint(0,10000000)
 	assert consecutive_triangulars(val) == True
 	assert reverse_triangular(25) == (15,10)
+	assert check_abundance(8) == -1
+	assert check_abundance(28) == 0
+	assert check_abundance(18) == 1
+tests()

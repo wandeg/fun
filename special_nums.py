@@ -28,11 +28,26 @@ def reverse_triangular(n):
 	assert root.is_integer() == True, "Invalid number"
 	return int(triangular(root)), int(triangular(root-1))
 
+def get_factors(n):
+	"""Gets all the factors of an integer"""
+	facts = set()
+	top = n//2
+	for i in range(1,top):
+		val = n%i
+		if val == 0:
+			quot = n/i
+			if quot != n:
+				facts.add(quot)
+			facts.add(i)
 
-assert triangular(3) == (1+2+3)
-assert triangular_two_digits(6,11) == (6+7+8+9+10+11)
-assert triangular_diff(200,200) == 200
+	return sorted(list(facts))
 
-val = random.randint(0,10000000)
-assert consecutive_triangulars(val) == True
-assert reverse_triangular(25) == (15,10)
+def tests():
+	"""Test code is correct"""
+	assert triangular(3) == (1+2+3)
+	assert triangular_two_digits(6,11) == (6+7+8+9+10+11)
+	assert triangular_diff(200,200) == 200
+
+	val = random.randint(0,10000000)
+	assert consecutive_triangulars(val) == True
+	assert reverse_triangular(25) == (15,10)

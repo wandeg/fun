@@ -34,11 +34,11 @@ def reverse_triangular(n):
 	assert root.is_integer() == True, "Invalid number"
 	return int(triangular(root)), int(triangular(root-1))
 
-@func_timer
+# @func_timer
 def get_factors(n):
 	"""Gets all the factors of an integer"""
 	facts = set()
-	top = n//2
+	top = int(math.ceil(math.sqrt(n)))
 	for i in range(1,top):
 		val = n%i
 		if val == 0:
@@ -49,7 +49,7 @@ def get_factors(n):
 
 	return sorted(list(facts))
 
-@func_timer
+# @func_timer
 def check_abundance(n):
 	"""Check whether number is perfect, abundant or deficient"""
 	sum_fact = sum(get_factors(n))
@@ -58,6 +58,35 @@ def check_abundance(n):
 	elif sum_fact < n:
 		return -1
 	return 0
+
+@func_timer
+def check_odd_perfect(n):
+	"""Checks the first n odd numbers to see if any is perfect
+	Conjencture is that there is none"""
+	for i in range(n):
+		val = (2*i)+1
+		if check_abundance(val) == 0:
+			return val
+
+# print check_odd_perfect(1000000)
+
+@func_timer
+def get_amicable(n):
+	"""Find all amicable pairs of numbers up to n
+	the sum of the proper factors of either one of these numbers
+	equals the other number
+	"""
+	amics = set()
+	holder = {}
+	for i in range(n+1):
+		factors = get_factors(i)
+		partner = sum(factors)
+		key = tuple(sorted([i,partner]))
+		if key in holder:
+			amics.add(key)
+		else:
+			holder[key] = True
+	return amics
 
 
 def tests():
@@ -73,5 +102,5 @@ def tests():
 	assert check_abundance(28) == 0
 	assert check_abundance(18) == 1
 
-if __name__ == '__main__':
-	tests()
+# if __name__ == '__main__':
+# 	tests()

@@ -3,6 +3,16 @@ import math
 from utils import func_timer
 
 @func_timer
+def triangular_naive(n):
+	"""Returns the nth triangular digit (sum of all consecutive digits from 1 up to n)"""
+	tot = 0
+	while n>0:
+		tot+=n
+		n-=1
+	return tot
+
+
+# @func_timer
 def triangular(n):
 	"""Returns the nth triangular digit (sum of all consecutive digits from 1 up to n)"""
 	return (n*(n+1))/2
@@ -88,10 +98,33 @@ def get_amicable(n):
 			holder[key] = True
 	return amics
 
+# @func_timer
+def is_square(n):
+	"""Check if an integer n is a square"""
+	for i in range(1,n//2):
+		if triangular(i)+triangular(i-1) == n:
+			return True
+	return False
+
+@func_timer
+def square_triangulars(n):
+	"""Find the first n triangular numbers that are squares"""
+	nums = []
+	ct = 0
+	i = 0
+	while ct < n:
+		i+=1
+		# print is_square(triangular(i))
+		if is_square(triangular(i)):
+			nums.append(i)
+			ct+=1
+	return nums
+
 
 def tests():
 	"""Test code is correct"""
 	assert triangular(3) == (1+2+3)
+	assert triangular(4) == triangular_naive(4)
 	assert triangular_two_digits(6,11) == (6+7+8+9+10+11)
 	assert triangular_diff(200,200) == 200
 
@@ -102,5 +135,5 @@ def tests():
 	assert check_abundance(28) == 0
 	assert check_abundance(18) == 1
 
-# if __name__ == '__main__':
-# 	tests()
+if __name__ == '__main__':
+	tests()

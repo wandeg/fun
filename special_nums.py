@@ -49,7 +49,7 @@ def get_factors(n):
 	"""Gets all the factors of an integer"""
 	facts = set()
 	top = int(math.ceil(math.sqrt(n)))
-	for i in range(1,top):
+	for i in range(1,top+1):
 		val = n%i
 		if val == 0:
 			quot = n/i

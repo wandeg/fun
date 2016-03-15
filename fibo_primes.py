@@ -12,8 +12,6 @@ def get_primes(lower,upper):
 
 	return primes
 
-get_primes(3,10000)
-# assert get_primes(3,7) == [2,3,5]
 @func_timer
 def primes_improved(lower,upper):
 	"""Reduces the number of operations by checking against prime factors instead of all possible integer factors"""
@@ -30,4 +28,16 @@ def primes_improved(lower,upper):
 				break
 	return primes
 
-primes_improved(3,10000)
+def prove_powers(n,k):
+	"""Prove that n raised to k is the sum of n consecutive odd
+	numbers beginning with n raised to k-1 minus n plus 1
+	"""
+	base = math.pow(n,k-1) -n
+	val = 0
+	fin = (2*n)
+	for i in range(1,fin,2):
+		val += base+i
+
+	return val
+
+

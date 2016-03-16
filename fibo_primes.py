@@ -58,5 +58,17 @@ def prove_powers(n,k):
 
 	return val
 
+def prove_form1():
+	"""Shows that the first 100 primes greater than 3 are either of the form
+		6k + 1 or 6k + 5."""
+
+	primes = primes_between(3,None, 100)
+	wanted = []
+	for i in primes:
+		if i > 3:
+			if ((i-1)%6) != 0 and ((i-5)%6) != 0 :
+				wanted.append(i)
+	return wanted
+
 
 

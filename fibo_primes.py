@@ -13,10 +13,12 @@ def get_primes(lower,upper):
 	return primes
 
 @func_timer
-def primes_improved(lower,upper):
+def primes_improved(upper, max_count):
 	"""Reduces the number of operations by checking against prime factors instead of all possible integer factors"""
 	primes = [2]
-	for i in range(lower,upper):
+	count = 0
+	i = 3
+	while (count < max_count) or (i < upper):
 		top = math.ceil(math.sqrt(i))
 		for j in primes:
 			if i%j == 0:
@@ -25,8 +27,24 @@ def primes_improved(lower,upper):
 				continue
 			else:
 				primes.append(i)
+				count +=1
 				break
+		i+=1
+
 	return primes
+
+@func_timer
+def primes_between(lower, upper, max_count=None):
+	"""Reduces the number of operations by checking against prime factors instead of all possible integer factors"""
+	primes = primes_improved(upper,max_count)
+	idx = 0
+	for prime in primes:
+		if prime < lower:
+			idx += 1
+		else:
+			break
+	return primes[idx:]
+
 
 def prove_powers(n,k):
 	"""Prove that n raised to k is the sum of n consecutive odd
@@ -39,5 +57,6 @@ def prove_powers(n,k):
 		val += base+i
 
 	return val
+
 
 

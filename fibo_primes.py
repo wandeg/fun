@@ -71,4 +71,12 @@ def prove_form1():
 	return wanted
 
 
+def get_fibs(n):
+	"""Gets the first n fibonacci numbers"""
+	fib = {1:1,2:1}
+	if n >=3:
+		for i in range(3,n+1):
+			fib[i] = fib[i-1] + fib[i-2]
+
+	return fib
 

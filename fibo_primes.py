@@ -80,3 +80,8 @@ def get_fibs(n):
 
 	return fib
 
+def get_nth_fib(n):
+	"""Returns the nth fibonacci number"""
+	fibs = get_fibs(n)
+	return fibs[n]
+

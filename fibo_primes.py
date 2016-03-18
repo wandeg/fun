@@ -85,3 +85,7 @@ def get_nth_fib(n):
 	fibs = get_fibs(n)
 	return fibs[n]
 
+def golden_ratio_fib(n):
+	"""Use the nth fibonacci number to approximate the golden ratio"""
+	fibs = get_fibs(n)
+	return fibs[n]/float(fibs[n-1])

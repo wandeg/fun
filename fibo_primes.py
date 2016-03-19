@@ -13,7 +13,7 @@ def get_primes(lower,upper):
 	return primes
 
 @func_timer
-def primes_improved(upper, max_count):
+def primes_improved(upper, max_count=None):
 	"""Reduces the number of operations by checking against prime factors instead of all possible integer factors"""
 	primes = [2]
 	count = 0
@@ -89,3 +89,20 @@ def golden_ratio_fib(n):
 	"""Use the nth fibonacci number to approximate the golden ratio"""
 	fibs = get_fibs(n)
 	return fibs[n]/float(fibs[n-1])
+
+def write_even_using_odd_primes(n):
+	"""Write a program that finds all the ways to write a given even integer
+		n >=6 as the sum of two odd primes"""
+	assert n >= 6 
+	assert n%2 == 0
+	ways = []
+	primes = set(primes_improved(n,None))
+	top = n/2
+	for prime in primes:
+		if prime >= 3 and prime < top:
+			partner = n - prime
+			if partner in primes:
+				ways.append((prime,partner))
+
+	return ways
+

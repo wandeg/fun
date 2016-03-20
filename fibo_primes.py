@@ -106,3 +106,10 @@ def write_even_using_odd_primes(n):
 
 	return ways
 
+def fibo_n_sum(n):
+	"""The first n terms of the Fibonacci sequence satisfy
+		u1+u2+u3+...+un = un+2 - 1"""
+	checker = get_nth_fib(n+2) - 1
+	fibs = get_fibs(n)
+	total = sum(fibs.values())
+	return total == checker

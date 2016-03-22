@@ -127,3 +127,12 @@ def binets(n):
     """Demonstrate Binet's equation to get the nth fibonacci number"""
     return math.floor((1.0 / math.sqrt(5)) * (math.pow((1 + math.sqrt(5)) / 2, n) - math.pow((1 - math.sqrt(5)) / 2, n)))
 
+@func_timer
+def sum_equation_naive(a,b,c,d,N):
+	total = 0
+	for i in range(1,N+1):
+		y = a*(i**3)+b*(i**2)+c*i+d
+		total+=y
+
+	return total
+

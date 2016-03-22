@@ -1,6 +1,6 @@
 import math
 from utils import func_timer
-from special_nums import get_factors
+from special_nums import get_factors, triangular
 
 
 @func_timer
@@ -131,8 +131,19 @@ def binets(n):
 def sum_equation_naive(a,b,c,d,N):
 	total = 0
 	for i in range(1,N+1):
-		y = a*(i**3)+b*(i**2)+c*i+d
+		y = (a*(i**3))+(b*(i**2))+(c*i)+d
 		total+=y
 
 	return total
+
+def sum_first_n_squared(n):
+	return (n*(n+1)*((2*n)+1))/6
+
+def sum_first_n_cubed(n):
+	return ((n*(n+1))/2)**2
+
+@func_timer
+def sum_equation_improved(a,b,c,d,N):
+	return a*sum_first_n_cubed(N)+b*sum_first_n_squared(N)+c*triangular(N)+d*N
+
 

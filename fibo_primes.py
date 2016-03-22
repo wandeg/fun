@@ -147,3 +147,34 @@ def sum_equation_improved(a,b,c,d,N):
 	return a*sum_first_n_cubed(N)+b*sum_first_n_squared(N)+c*triangular(N)+d*N
 
 
+@func_timer
+def palindrome_primes(max_count=None):
+    """
+    Return a list of pairs of max_count palindrome primes ie
+    primes whose reverse are also primes
+    """
+    primes = [2]
+    prime_strings = {'2'}
+    count = 0
+    i = 3
+    palindromes = []
+    while (count < max_count):
+        top = math.ceil(math.sqrt(i))
+        for j in primes:
+            if i % j == 0:
+                break
+            elif i % j != 0 and j < top:
+                continue
+            else:
+                primes.append(i)
+                prstr = str(i)
+                revstr = prstr[::-1]
+                prime_strings.add(prstr)
+                if len(prstr) > 1 and revstr in prime_strings and prstr != revstr:
+	                count += 1
+	                palindromes.append((int(revstr),i))
+                break
+        i += 1
+
+    return sorted(palindromes)
+

@@ -10,3 +10,13 @@ def factorial_loop(n):
 		i+=1
 
 	return fact 
+
+
+@func_timer
+def factorial_rec(n):
+	"""Returns the nth factorial using recursion"""
+
+	if n == 1:
+		return 1
+	else :
+		return n*factorial_rec(n-1)

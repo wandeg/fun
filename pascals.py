@@ -16,7 +16,7 @@ def factorial_loop(n):
 def factorial_rec(n):
 	"""Returns the nth factorial using recursion"""
 
-	if n == 1:
+	if n == 1 or n == 0:
 		return 1
 	else :
 		return n*factorial_rec(n-1)

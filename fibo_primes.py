@@ -178,3 +178,26 @@ def palindrome_primes(max_count=None):
 
     return sorted(palindromes)
 
+@func_timer
+def goldbachs(n):
+    """
+    Attempts to prove Goldblach's conjecture that every even
+    number is the sum of two primes. This code will do this for
+    all even values up to n
+
+    :param n : maximum number up to which we want to prove this
+    :returns valid (bool): whether the hypotheses is valid for all 
+    even numbers up to n
+    """
+    valid = True
+    primes = set(primes_between(0, n/2 + 1))
+    for i in range(2,n+1,2):
+        for j in range(2,(i/2)+1):
+            if j in primes and (i-j) in primes:
+                valid = valid and True
+                break
+            else:
+                continue
+            valid = False
+
+    return valid

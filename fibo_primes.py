@@ -7,7 +7,7 @@ from special_nums import get_factors, triangular
 def get_primes(lower, upper):
     """Gets all the prime numbers between the lower and upper limits provided"""
     primes = [2]
-    for i in range(lower, upper):
+    for i in xrange(lower, upper):
         if len(get_factors(i)) == 1:
             primes.append(i)
 
@@ -56,7 +56,7 @@ def prove_powers(n, k):
     base = math.pow(n, k - 1) - n
     val = 0
     fin = (2 * n)
-    for i in range(1, fin, 2):
+    for i in xrange(1, fin, 2):
         val += base + i
 
     return val
@@ -79,7 +79,7 @@ def get_fibs(n):
     """Gets the first n fibonacci numbers"""
     fib = {1: 1, 2: 1}
     if n >= 3:
-        for i in range(3, n + 1):
+        for i in xrange(3, n + 1):
             fib[i] = fib[i - 1] + fib[i - 2]
 
     return fib
@@ -130,7 +130,7 @@ def binets(n):
 @func_timer
 def sum_equation_naive(a,b,c,d,N):
 	total = 0
-	for i in range(1,N+1):
+	for i in xrange(1,N+1):
 		y = (a*(i**3))+(b*(i**2))+(c*i)+d
 		total+=y
 
@@ -191,8 +191,8 @@ def goldbachs(n):
     """
     valid = True
     primes = set(primes_between(0, n/2 + 1))
-    for i in range(2,n+1,2):
-        for j in range(2,(i/2)+1):
+    for i in xrange(2,n+1,2):
+        for j in xrange(2,(i/2)+1):
             if j in primes and (i-j) in primes:
                 valid = valid and True
                 break

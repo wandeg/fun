@@ -49,7 +49,7 @@ def get_factors(n):
 	"""Gets all the factors of an integer"""
 	facts = set()
 	top = int(math.ceil(math.sqrt(n)))
-	for i in range(1,top+1):
+	for i in xrange(1,top+1):
 		val = n%i
 		if val == 0:
 			quot = n/i
@@ -73,7 +73,7 @@ def check_abundance(n):
 def check_odd_perfect(n):
 	"""Checks the first n odd numbers to see if any is perfect
 	Conjencture is that there is none"""
-	for i in range(n):
+	for i in xrange(n):
 		val = (2*i)+1
 		if check_abundance(val) == 0:
 			return val
@@ -88,7 +88,7 @@ def get_amicable(n):
 	"""
 	amics = set()
 	holder = {}
-	for i in range(n+1):
+	for i in xrange(n+1):
 		factors = get_factors(i)
 		partner = sum(factors)
 		key = tuple(sorted([i,partner]))
@@ -101,7 +101,7 @@ def get_amicable(n):
 # @func_timer
 def is_square(n):
 	"""Check if an integer n is a square"""
-	for i in range(1,n//2):
+	for i in xrange(1,n//2):
 		if triangular(i)+triangular(i-1) == n:
 			return True
 	return False

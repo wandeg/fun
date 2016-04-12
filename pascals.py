@@ -48,3 +48,12 @@ def pascals_triangle_naive(n):
 		arr = nu_arr
 
 	return nu_arr
+
+@func_timer
+def pascals_triangle_binomial(n):
+	"""Uses binomial coefficients to generate pascals triangle's nth row"""
+	triangle_row = []
+	for i in range(n+1):
+		triangle_row.append(n_choose_k(n,i))
+
+	return triangle_row

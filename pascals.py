@@ -30,7 +30,7 @@ def n_choose_k_naive(n,k):
 
 	return factorial_loop(n)/(factorial_loop(k)*factorial_loop(n-k))
 
-@func_timer
+# @func_timer
 def n_choose_k_improved(n,k):
 	"""
 	Returns the number of ways you can choose k 
@@ -64,7 +64,7 @@ def pascals_triangle_binomial(n):
 	"""Uses binomial coefficients to generate pascals triangle's nth row"""
 	triangle_row = []
 	for i in range(n+1):
-		triangle_row.append(n_choose_k_naive(n,i))
+		triangle_row.append(n_choose_k_improved(n,i))
 
 	return triangle_row
 
@@ -74,7 +74,7 @@ def pascals_triangle_binomial_improved(n):
 	triangle_row = []
 	top = (n/2) + 1
 	for i in range(top):
-		triangle_row.append(n_choose_k_naive(n,i))
+		triangle_row.append(n_choose_k_improved(n,i))
 	if n %2 == 0:
 		triangle_row.extend(triangle_row[:-1][::-1])
 	else:

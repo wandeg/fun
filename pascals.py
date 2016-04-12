@@ -28,7 +28,7 @@ def n_choose_k(n,k):
 	items from n items in any order
 	"""
 
-	return factorial_loop(n)/factorial_loop(k)*factorial_loop(n-k)
+	return factorial_loop(n)/(factorial_loop(k)*factorial_loop(n-k))
 
 @func_timer
 def pascals_triangle_naive(n):
@@ -48,4 +48,3 @@ def pascals_triangle_naive(n):
 		arr = nu_arr
 
 	return nu_arr
-

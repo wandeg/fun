@@ -1,6 +1,7 @@
 from utils import func_timer
+import math
 
-# @func_timer
+@func_timer
 def factorial_loop(n, until=1):
 	"""Get the nth factorial using a loop"""
 	fact = 1
@@ -82,3 +83,28 @@ def pascals_triangle_binomial_improved(n):
 
 
 	return triangle_row
+
+@func_timer
+def fact_memo(n):
+	mem = {}
+	mem[1] = 1
+	if n > 2:
+		for i in range(2,n+1):
+			mem[i] = i * mem[i-1]
+
+	return mem
+
+@func_timer
+def get_fact_as_facts(top = 30):
+	mem = fact_memo(top)
+	mem_inv = {v:k for k,v in mem.iteritems()}
+	mapper = {}
+	for i in range(2,top+1):
+		for j in range(2,i):
+			val = mem[i]/mem[j]
+			if val in mem_inv:
+				mapper[i]= (j, mem_inv[val])
+
+	return mapper
+
+\

@@ -32,3 +32,12 @@ def gcd_naive(a,b):
 
 		return b
 
+def gcd_rec(a,b):
+	"""
+	Recursively compute the gcd of 2 numbers
+	"""
+	if a%b ==0:
+		return b
+	else:
+		return gcd_rec(b,a%b)
+

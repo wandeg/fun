@@ -41,3 +41,24 @@ def gcd_rec(a,b):
 	else:
 		return gcd_rec(b,a%b)
 
+def divisible_by_six(cap=1000):
+	"""
+	Assert that all numbers less than cap are 
+	divisible by 6 when they form the equation n**3 -n
+	"""
+	for n in range(cap+1):
+		if (n**3 -n) % 6 !=0:
+			return n
+
+def divisible_by_thirty(cap=1000):
+	"""
+	Assert that all numbers less than cap are 
+	divisible by 30 when they form the equation n**5 -n
+	"""
+	for n in range(cap+1):
+		if (n**5 -n) % 30 !=0:
+			return n
+
+
+
+print divisible_by_six()
